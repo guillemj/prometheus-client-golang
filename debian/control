@@ -1,0 +1,22 @@
+Source: golang-prometheus-client
+Section: devel
+Priority: extra
+Maintainer: Martín Ferrari <tincho@debian.org>
+Build-Depends: debhelper (>= 9.0.0), dh-golang, golang-go
+Standards-Version: 3.9.6
+Vcs-Git: git://git.debian.org/collab-maint/golang-prometheus-client.git
+Vcs-Browser: http://git.debian.org/?p=collab-maint/golang-prometheus-client.git;a=summary
+Homepage: https://github.com/prometheus/client_golang.git
+
+Package: golang-prometheus-client-dev
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Built-Using: ${misc:Built-Using}
+Description: Prometheus instrumentation library for Go applications
+ This is the Prometheus Go client library. It provides two main functions:
+ .
+ * The exposition library is used to export metrics to a Prometheus server or
+   pushgateway.
+ .
+ * The consumption library is used to process metrics exported by a Prometheus
+   client. (The Prometheus server is using that library.)

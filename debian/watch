@@ -1,0 +1,5 @@
+version=3
+
+opts="filenamemangle=s/(?:.*)?v?(\d[\d\.]*)\.tar\.gz/client_golang-$1.tar.gz/" \
+         https://github.com/prometheus/client_golang/tags \
+         (?:.*/)?v?(\d[\d\.]*)\.tar\.gz
