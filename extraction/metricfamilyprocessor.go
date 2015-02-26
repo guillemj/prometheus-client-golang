@@ -16,6 +16,7 @@ package extraction
 import (
 	"fmt"
 	"io"
+	"math"
 
 	dto "github.com/prometheus/client_model/go"
 
@@ -69,6 +70,10 @@ func extractMetricFamily(out Ingester, o *ProcessOptions, family *dto.MetricFami
 		if err := extractUntyped(out, o, family); err != nil {
 			return err
 		}
+	case dto.MetricType_HISTOGRAM:
+		if err := extractHistogram(out, o, family); err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -81,7 +86,10 @@ func extractCounter(out Ingester, o *ProcessOptions, f *dto.MetricFamily) error 
 			continue
 		}
 
-		sample := new(model.Sample)
+		sample := &model.Sample{
+			Metric: model.Metric{},
+			Value:  model.SampleValue(m.Counter.GetValue()),
+		}
 		samples = append(samples, sample)
 
 		if m.TimestampMs != nil {
@@ -89,16 +97,12 @@ func extractCounter(out Ingester, o *ProcessOptions, f *dto.MetricFamily) error 
 		} else {
 			sample.Timestamp = o.Timestamp
 		}
-		sample.Metric = model.Metric{}
-		metric := sample.Metric
 
+		metric := sample.Metric
 		for _, p := range m.Label {
 			metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
 		}
-
 		metric[model.MetricNameLabel] = model.LabelValue(f.GetName())
-
-		sample.Value = model.SampleValue(m.Counter.GetValue())
 	}
 
 	return out.Ingest(samples)
@@ -112,7 +116,10 @@ func extractGauge(out Ingester, o *ProcessOptions, f *dto.MetricFamily) error {
 			continue
 		}
 
-		sample := new(model.Sample)
+		sample := &model.Sample{
+			Metric: model.Metric{},
+			Value:  model.SampleValue(m.Gauge.GetValue()),
+		}
 		samples = append(samples, sample)
 
 		if m.TimestampMs != nil {
@@ -120,16 +127,12 @@ func extractGauge(out Ingester, o *ProcessOptions, f *dto.MetricFamily) error {
 		} else {
 			sample.Timestamp = o.Timestamp
 		}
-		sample.Metric = model.Metric{}
-		metric := sample.Metric
 
+		metric := sample.Metric
 		for _, p := range m.Label {
 			metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
 		}
-
 		metric[model.MetricNameLabel] = model.LabelValue(f.GetName())
-
-		sample.Value = model.SampleValue(m.Gauge.GetValue())
 	}
 
 	return out.Ingest(samples)
@@ -149,48 +152,50 @@ func extractSummary(out Ingester, o *ProcessOptions, f *dto.MetricFamily) error 
 		}
 
 		for _, q := range m.Summary.Quantile {
-			sample := new(model.Sample)
+			sample := &model.Sample{
+				Metric:    model.Metric{},
+				Value:     model.SampleValue(q.GetValue()),
+				Timestamp: timestamp,
+			}
 			samples = append(samples, sample)
 
-			sample.Timestamp = timestamp
-			sample.Metric = model.Metric{}
 			metric := sample.Metric
-
 			for _, p := range m.Label {
 				metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
 			}
 			// BUG(matt): Update other names to "quantile".
-			metric[model.LabelName("quantile")] = model.LabelValue(fmt.Sprint(q.GetQuantile()))
-
+			metric[model.LabelName(model.QuantileLabel)] = model.LabelValue(fmt.Sprint(q.GetQuantile()))
 			metric[model.MetricNameLabel] = model.LabelValue(f.GetName())
-
-			sample.Value = model.SampleValue(q.GetValue())
 		}
 
 		if m.Summary.SampleSum != nil {
-			sum := new(model.Sample)
-			sum.Timestamp = timestamp
-			metric := model.Metric{}
+			sum := &model.Sample{
+				Metric:    model.Metric{},
+				Value:     model.SampleValue(m.Summary.GetSampleSum()),
+				Timestamp: timestamp,
+			}
+			samples = append(samples, sum)
+
+			metric := sum.Metric
 			for _, p := range m.Label {
 				metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
 			}
 			metric[model.MetricNameLabel] = model.LabelValue(f.GetName() + "_sum")
-			sum.Metric = metric
-			sum.Value = model.SampleValue(m.Summary.GetSampleSum())
-			samples = append(samples, sum)
 		}
 
 		if m.Summary.SampleCount != nil {
-			count := new(model.Sample)
-			count.Timestamp = timestamp
-			metric := model.Metric{}
+			count := &model.Sample{
+				Metric:    model.Metric{},
+				Value:     model.SampleValue(m.Summary.GetSampleCount()),
+				Timestamp: timestamp,
+			}
+			samples = append(samples, count)
+
+			metric := count.Metric
 			for _, p := range m.Label {
 				metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
 			}
 			metric[model.MetricNameLabel] = model.LabelValue(f.GetName() + "_count")
-			count.Metric = metric
-			count.Value = model.SampleValue(m.Summary.GetSampleCount())
-			samples = append(samples, count)
 		}
 	}
 
@@ -205,7 +210,10 @@ func extractUntyped(out Ingester, o *ProcessOptions, f *dto.MetricFamily) error 
 			continue
 		}
 
-		sample := new(model.Sample)
+		sample := &model.Sample{
+			Metric: model.Metric{},
+			Value:  model.SampleValue(m.Untyped.GetValue()),
+		}
 		samples = append(samples, sample)
 
 		if m.TimestampMs != nil {
@@ -213,16 +221,97 @@ func extractUntyped(out Ingester, o *ProcessOptions, f *dto.MetricFamily) error 
 		} else {
 			sample.Timestamp = o.Timestamp
 		}
-		sample.Metric = model.Metric{}
-		metric := sample.Metric
 
+		metric := sample.Metric
 		for _, p := range m.Label {
 			metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
 		}
-
 		metric[model.MetricNameLabel] = model.LabelValue(f.GetName())
+	}
 
-		sample.Value = model.SampleValue(m.Untyped.GetValue())
+	return out.Ingest(samples)
+}
+
+func extractHistogram(out Ingester, o *ProcessOptions, f *dto.MetricFamily) error {
+	samples := make(model.Samples, 0, len(f.Metric))
+
+	for _, m := range f.Metric {
+		if m.Histogram == nil {
+			continue
+		}
+
+		timestamp := o.Timestamp
+		if m.TimestampMs != nil {
+			timestamp = model.TimestampFromUnixNano(*m.TimestampMs * 1000000)
+		}
+
+		infSeen := false
+
+		for _, q := range m.Histogram.Bucket {
+			sample := &model.Sample{
+				Metric:    model.Metric{},
+				Value:     model.SampleValue(q.GetCumulativeCount()),
+				Timestamp: timestamp,
+			}
+			samples = append(samples, sample)
+
+			metric := sample.Metric
+			for _, p := range m.Label {
+				metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
+			}
+			metric[model.LabelName(model.BucketLabel)] = model.LabelValue(fmt.Sprint(q.GetUpperBound()))
+			metric[model.MetricNameLabel] = model.LabelValue(f.GetName() + "_bucket")
+
+			if math.IsInf(q.GetUpperBound(), +1) {
+				infSeen = true
+			}
+		}
+
+		if m.Histogram.SampleSum != nil {
+			sum := &model.Sample{
+				Metric:    model.Metric{},
+				Value:     model.SampleValue(m.Histogram.GetSampleSum()),
+				Timestamp: timestamp,
+			}
+			samples = append(samples, sum)
+
+			metric := sum.Metric
+			for _, p := range m.Label {
+				metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
+			}
+			metric[model.MetricNameLabel] = model.LabelValue(f.GetName() + "_sum")
+		}
+
+		if m.Histogram.SampleCount != nil {
+			count := &model.Sample{
+				Metric:    model.Metric{},
+				Value:     model.SampleValue(m.Histogram.GetSampleCount()),
+				Timestamp: timestamp,
+			}
+			samples = append(samples, count)
+
+			metric := count.Metric
+			for _, p := range m.Label {
+				metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
+			}
+			metric[model.MetricNameLabel] = model.LabelValue(f.GetName() + "_count")
+
+			if !infSeen {
+				infBucket := &model.Sample{
+					Metric:    model.Metric{},
+					Value:     count.Value,
+					Timestamp: timestamp,
+				}
+				samples = append(samples, infBucket)
+
+				metric := infBucket.Metric
+				for _, p := range m.Label {
+					metric[model.LabelName(p.GetName())] = model.LabelValue(p.GetValue())
+				}
+				metric[model.LabelName(model.BucketLabel)] = model.LabelValue("+Inf")
+				metric[model.MetricNameLabel] = model.LabelValue(f.GetName() + "_bucket")
+			}
+		}
 	}
 
 	return out.Ingest(samples)
