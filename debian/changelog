@@ -1,5 +1,5 @@
-golang-prometheus-client (0.1.0-1) UNRELEASED; urgency=medium
+golang-prometheus-client (0.2.0-1) UNRELEASED; urgency=medium
 
   * Initial release. (Closes: #779260)
 
- -- Martín Ferrari <tincho@debian.org>  Mon, 16 Feb 2015 07:05:46 +0000
+ -- Martín Ferrari <tincho@debian.org>  Thu, 26 Feb 2015 13:23:16 +0000
