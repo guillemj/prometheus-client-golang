@@ -1,0 +1,132 @@
+--- a/text/parse.go
++++ b/text/parse.go
+@@ -24,7 +24,7 @@
+ 
+ 	dto "github.com/prometheus/client_model/go"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/prometheus/client_golang/model"
+ )
+ 
+--- a/prometheus/desc.go
++++ b/prometheus/desc.go
+@@ -13,7 +13,7 @@
+ 
+ 	dto "github.com/prometheus/client_model/go"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ )
+ 
+ var (
+--- a/prometheus/example_selfcollector_test.go
++++ b/prometheus/example_selfcollector_test.go
+@@ -16,7 +16,7 @@
+ import (
+ 	"runtime"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 
+ 	dto "github.com/prometheus/client_model/go"
+ 
+--- a/prometheus/examples_test.go
++++ b/prometheus/examples_test.go
+@@ -23,7 +23,7 @@
+ 
+ 	dto "github.com/prometheus/client_model/go"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 
+ 	"github.com/prometheus/client_golang/prometheus"
+ )
+--- a/prometheus/histogram.go
++++ b/prometheus/histogram.go
+@@ -20,7 +20,7 @@
+ 	"sort"
+ 	"sync/atomic"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 
+ 	"github.com/prometheus/client_golang/model"
+ 	dto "github.com/prometheus/client_model/go"
+--- a/prometheus/registry.go
++++ b/prometheus/registry.go
+@@ -35,7 +35,7 @@
+ 
+ 	dto "github.com/prometheus/client_model/go"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 
+ 	"github.com/prometheus/client_golang/_vendor/goautoneg"
+ 	"github.com/prometheus/client_golang/model"
+--- a/prometheus/registry_test.go
++++ b/prometheus/registry_test.go
+@@ -25,7 +25,7 @@
+ 	"net/http"
+ 	"testing"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 	dto "github.com/prometheus/client_model/go"
+ )
+ 
+--- a/prometheus/summary.go
++++ b/prometheus/summary.go
+@@ -20,7 +20,7 @@
+ 	"sync"
+ 	"time"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 
+ 	dto "github.com/prometheus/client_model/go"
+ 
+--- a/prometheus/value.go
++++ b/prometheus/value.go
+@@ -22,7 +22,7 @@
+ 
+ 	dto "github.com/prometheus/client_model/go"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ )
+ 
+ // ValueType is an enumeration of metric types that represent a simple value.
+--- a/text/create_test.go
++++ b/text/create_test.go
+@@ -19,7 +19,7 @@
+ 	"strings"
+ 	"testing"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 	dto "github.com/prometheus/client_model/go"
+ )
+ 
+--- a/text/parse_test.go
++++ b/text/parse_test.go
+@@ -18,7 +18,7 @@
+ 	"strings"
+ 	"testing"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 	dto "github.com/prometheus/client_model/go"
+ )
+ 
+--- a/text/proto.go
++++ b/text/proto.go
+@@ -17,7 +17,7 @@
+ 	"fmt"
+ 	"io"
+ 
+-	"github.com/golang/protobuf/proto"
++	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/matttproud/golang_protobuf_extensions/ext"
+ 
+ 	dto "github.com/prometheus/client_model/go"
