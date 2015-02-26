@@ -1,0 +1,231 @@
+--- a/extraction/metricfamilyprocessor.go
++++ b/extraction/metricfamilyprocessor.go
+@@ -17,7 +17,7 @@
+ 	"fmt"
+ 	"io"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"github.com/matttproud/golang_protobuf_extensions/ext"
+ 
+--- a/prometheus/desc.go
++++ b/prometheus/desc.go
+@@ -11,7 +11,7 @@
+ 
+ 	"github.com/prometheus/client_golang/model"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+ )
+--- a/prometheus/registry.go
++++ b/prometheus/registry.go
+@@ -33,7 +33,7 @@
+ 	"strings"
+ 	"sync"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+ 
+--- a/text/parse.go
++++ b/text/parse.go
+@@ -22,7 +22,7 @@
+ 	"strconv"
+ 	"strings"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/prometheus/client_golang/model"
+--- a/prometheus/counter_test.go
++++ b/prometheus/counter_test.go
+@@ -16,7 +16,7 @@
+ import (
+ 	"testing"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ func TestCounterAdd(t *testing.T) {
+--- a/prometheus/example_selfcollector_test.go
++++ b/prometheus/example_selfcollector_test.go
+@@ -18,7 +18,7 @@
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"github.com/prometheus/client_golang/prometheus"
+ )
+--- a/prometheus/examples_test.go
++++ b/prometheus/examples_test.go
+@@ -21,7 +21,7 @@
+ 	"runtime"
+ 	"sort"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+ 
+--- a/prometheus/expvar_test.go
++++ b/prometheus/expvar_test.go
+@@ -19,7 +19,7 @@
+ 	"sort"
+ 	"strings"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"github.com/prometheus/client_golang/prometheus"
+ )
+--- a/prometheus/gauge_test.go
++++ b/prometheus/gauge_test.go
+@@ -20,7 +20,7 @@
+ 	"testing"
+ 	"testing/quick"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ func listenGaugeStream(vals, result chan float64, done chan struct{}) {
+--- a/prometheus/go_collector_test.go
++++ b/prometheus/go_collector_test.go
+@@ -5,7 +5,7 @@
+ 	"testing"
+ 	"time"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ func TestGoCollector(t *testing.T) {
+--- a/prometheus/http_test.go
++++ b/prometheus/http_test.go
+@@ -19,7 +19,7 @@
+ 	"testing"
+ 	"time"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ type respBody string
+--- a/prometheus/metric.go
++++ b/prometheus/metric.go
+@@ -16,7 +16,7 @@
+ import (
+ 	"strings"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ // A Metric models a single sample value with its meta data being exported to
+--- a/prometheus/registry_test.go
++++ b/prometheus/registry_test.go
+@@ -26,7 +26,7 @@
+ 	"testing"
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ type fakeResponseWriter struct {
+--- a/prometheus/summary.go
++++ b/prometheus/summary.go
+@@ -22,7 +22,7 @@
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"github.com/prometheus/client_golang/_vendor/perks/quantile"
+ )
+--- a/prometheus/summary_test.go
++++ b/prometheus/summary_test.go
+@@ -22,7 +22,7 @@
+ 	"testing/quick"
+ 	"time"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ func benchmarkSummaryObserve(w int, b *testing.B) {
+--- a/prometheus/value.go
++++ b/prometheus/value.go
+@@ -19,7 +19,7 @@
+ 	"sort"
+ 	"sync"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+ )
+--- a/text/bench_test.go
++++ b/text/bench_test.go
+@@ -19,7 +19,7 @@
+ 	"io"
+ 	"io/ioutil"
+ 	"testing"
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ 
+ 	"github.com/matttproud/golang_protobuf_extensions/ext"
+ )
+--- a/text/create.go
++++ b/text/create.go
+@@ -26,7 +26,7 @@
+ 	"io"
+ 	"strings"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ // MetricFamilyToText converts a MetricFamily proto message into text format and
+--- a/text/create_test.go
++++ b/text/create_test.go
+@@ -20,7 +20,7 @@
+ 	"testing"
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ func testCreate(t testing.TB) {
+--- a/text/parse_test.go
++++ b/text/parse_test.go
+@@ -19,7 +19,7 @@
+ 	"testing"
+ 
+ 	"code.google.com/p/goprotobuf/proto"
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ var parser Parser
+--- a/text/proto.go
++++ b/text/proto.go
+@@ -20,7 +20,7 @@
+ 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/matttproud/golang_protobuf_extensions/ext"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/debian/tmp/debian"
+ )
+ 
+ // WriteProtoDelimited writes the MetricFamily to the writer in delimited

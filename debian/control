@@ -2,10 +2,11 @@ Source: golang-prometheus-client
 Section: devel
 Priority: extra
 Maintainer: Martín Ferrari <tincho@debian.org>
-Build-Depends: debhelper (>= 9.0.0), dh-golang, golang-go
+Build-Depends: debhelper (>= 9.0.0), dh-golang, golang-go,
+ golang-goprotobuf-dev, golang-protobuf-extensions-dev, golang-procfs-dev
 Standards-Version: 3.9.6
-Vcs-Git: git://git.debian.org/collab-maint/golang-prometheus-client.git
-Vcs-Browser: http://git.debian.org/?p=collab-maint/golang-prometheus-client.git;a=summary
+Vcs-Git: git://anonscm.debian.org/collab-maint/golang-prometheus-client.git/
+Vcs-Browser: http://anonscm.debian.org/cgit/collab-maint/golang-prometheus-client.git/
 Homepage: https://github.com/prometheus/client_golang.git
 
 Package: golang-prometheus-client-dev
