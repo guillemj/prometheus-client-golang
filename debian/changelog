@@ -1,3 +1,9 @@
+golang-prometheus-client (0.2.0-1+1) unstable; urgency=medium
+
+  * Re-build with current versions of build dependencies.
+
+ -- Martín Ferrari <tincho@debian.org>  Sun, 01 Mar 2015 13:43:22 +0000
+
 golang-prometheus-client (0.2.0-1) unstable; urgency=medium
 
   * Initial release. (Closes: #779260)
