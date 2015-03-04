@@ -55,15 +55,15 @@
  	dto "github.com/prometheus/client_model/go"
 --- a/prometheus/registry.go
 +++ b/prometheus/registry.go
-@@ -35,7 +35,7 @@
+@@ -34,7 +34,7 @@
+ 	"sync"
  
- 	dto "github.com/prometheus/client_model/go"
- 
+ 	"bitbucket.org/ww/goautoneg"
 -	"github.com/golang/protobuf/proto"
 +	"code.google.com/p/goprotobuf/proto"
  
- 	"github.com/prometheus/client_golang/_vendor/goautoneg"
- 	"github.com/prometheus/client_golang/model"
+ 	dto "github.com/prometheus/client_model/go"
+ 
 --- a/prometheus/registry_test.go
 +++ b/prometheus/registry_test.go
 @@ -25,7 +25,7 @@
@@ -77,10 +77,10 @@
  
 --- a/prometheus/summary.go
 +++ b/prometheus/summary.go
-@@ -20,7 +20,7 @@
- 	"sync"
+@@ -21,7 +21,7 @@
  	"time"
  
+ 	"github.com/beorn7/perks/quantile"
 -	"github.com/golang/protobuf/proto"
 +	"code.google.com/p/goprotobuf/proto"
  
