@@ -28,3 +28,5 @@ override_dh_auto_configure:
 	cd debian; protoc metrics.proto --go_out=$(PROTODIR)
 	# Include test fixtures.
 	cp -av extraction/fixtures $(BUILDDIR)/src/$(DH_GOPKG)/extraction
+	# Include vendored dependencies.
+	cp -av Godeps $(BUILDDIR)/src
