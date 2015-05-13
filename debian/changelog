@@ -1,4 +1,4 @@
-golang-prometheus-client (0.3.0+ds-1) UNRELEASED; urgency=medium
+golang-prometheus-client (0.5.0+ds-1) UNRELEASED; urgency=medium
 
   * New upstream release, which includes an incompatible change in metric
     fingerprints, so invalidates all past storage. This is not a problem yet,
@@ -8,7 +8,7 @@ golang-prometheus-client (0.3.0+ds-1) UNRELEASED; urgency=medium
   * New patch: Fix import path for remaining vendored dependencies.
   * Update watchfile for repackaging mangle.
 
- -- Martín Ferrari <tincho@debian.org>  Wed, 04 Mar 2015 12:38:47 +0000
+ -- Martín Ferrari <tincho@debian.org>  Wed, 13 May 2015 13:29:20 +0100
 
 golang-prometheus-client (0.2.0-1+1) unstable; urgency=medium
 
