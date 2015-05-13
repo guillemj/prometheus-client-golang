@@ -6,7 +6,7 @@ Files: *
 Copyright: 2012-2015 The Prometheus Authors
 License: Apache-2.0
 
-Files: _vendor/perks/*
+Files: Godeps/_workspace/src/github.com/beorn7/perks/*
 Copyright: 2013-2015 Blake Mizerany, Björn Rabenstein
 License: MIT
 Comment:
@@ -15,7 +15,7 @@ Comment:
  Copyright 2013-2015 Blake Mizerany, Björn Rabenstein
  See https://github.com/beorn7/perks/blob/master/README.md for license details.
 
-Files: _vendor/goautoneg/*
+Files: Godeps/_workspace/src/bitbucket.org/ww/goautoneg/*
 Copyright: 2011 Open Knowledge Foundation Ltd.
 License: BSD-3-clause
 
