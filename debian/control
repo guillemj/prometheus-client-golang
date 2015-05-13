@@ -12,7 +12,8 @@ Homepage: https://github.com/prometheus/client_golang.git
 
 Package: golang-prometheus-client-dev
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, golang-goprotobuf-dev,
+ golang-protobuf-extensions-dev (>= 0+git20150225), golang-procfs-dev
 Built-Using: ${misc:Built-Using}
 Description: Prometheus instrumentation library for Go applications
  This is the Prometheus Go client library. It provides two main functions:
