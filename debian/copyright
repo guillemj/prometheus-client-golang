@@ -23,6 +23,13 @@ Files: debian/*
 Copyright: 2015 Martín Ferrari <tincho@tincho.org>
 License: Apache-2.0
 
+Files: debian/metrics.proto
+Copyright: 2013 Prometheus Team
+License: Apache-2.0
+Comment:
+ Copied over from the https://github.com/prometheus/client_model repository,
+ which is just this protocol buffer definition and a Makefile.
+
 License: Apache-2.0
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
