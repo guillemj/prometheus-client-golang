@@ -33,7 +33,7 @@
  
 --- a/prometheus/examples_test.go
 +++ b/prometheus/examples_test.go
-@@ -23,7 +23,7 @@
+@@ -25,7 +25,7 @@
  
  	dto "github.com/prometheus/client_model/go"
  
@@ -77,7 +77,7 @@
  
 --- a/prometheus/summary.go
 +++ b/prometheus/summary.go
-@@ -21,7 +21,7 @@
+@@ -22,7 +22,7 @@
  	"time"
  
  	"github.com/beorn7/perks/quantile"
@@ -127,6 +127,6 @@
  
 -	"github.com/golang/protobuf/proto"
 +	"code.google.com/p/goprotobuf/proto"
- 	"github.com/matttproud/golang_protobuf_extensions/ext"
+ 	"github.com/matttproud/golang_protobuf_extensions/pbutil"
  
  	dto "github.com/prometheus/client_model/go"

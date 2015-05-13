@@ -11,7 +11,7 @@
  	dto "github.com/prometheus/client_model/go"
 --- a/prometheus/summary.go
 +++ b/prometheus/summary.go
-@@ -20,7 +20,7 @@
+@@ -21,7 +21,7 @@
  	"sync"
  	"time"
  
