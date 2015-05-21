@@ -7,7 +7,7 @@ export DH_VERBOSE=1
 # Using it allows us to build applications without patching locations.
 export DH_GOPKG := github.com/prometheus/client_golang
 
-# Exclude test code from compilation and installation.
+# Exclude sample code from compilation and installation.
 export DH_GOLANG_EXCLUDES := examples
 
 %:
@@ -20,13 +20,17 @@ export DH_GOLANG_EXCLUDES := examples
 
 BUILDDIR := $(shell perl -w -MDebian::Debhelper::Buildsystem::golang -e \
     'print Debian::Debhelper::Buildsystem::golang->new()->get_builddir()')
-PROTODIR := $(CURDIR)/$(BUILDDIR)/src/github.com/prometheus/client_model/go
+PROTODIR := $(CURDIR)/$(BUILDDIR)/src/$(DH_GOPKG)/client_model
+GODEPSDIR := Godeps/_workspace/src
+DESTDEPSDIR := $(BUILDDIR)/src/$(DH_GOPKG)/deps
 
 override_dh_auto_configure:
 	dh_auto_configure -O--buildsystem=golang
 	mkdir -p $(PROTODIR)
 	cd debian; protoc metrics.proto --go_out=$(PROTODIR)
+	# Move vendored dependencies to a saner path.
+	mv -v $(BUILDDIR)/src/$(DH_GOPKG)/$(GODEPSDIR) $(DESTDEPSDIR)
 	# Include test fixtures.
 	cp -av extraction/fixtures $(BUILDDIR)/src/$(DH_GOPKG)/extraction
-	# Include vendored dependencies.
-	cp -av Godeps $(BUILDDIR)/src
+	cp -av $(GODEPSDIR)/github.com/beorn7/perks/quantile/exampledata.txt \
+	    $(DESTDEPSDIR)/github.com/beorn7/perks/quantile/
