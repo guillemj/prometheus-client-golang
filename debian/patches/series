@@ -1,3 +1,2 @@
-01-Compat_with_older_protobuf_repo.patch
 02-Vendored_dependencies.patch
 03-Embed_client_model.patch

@@ -24,18 +24,18 @@
 +++ b/prometheus/desc.go
 @@ -11,7 +11,7 @@
  
- 	"github.com/prometheus/client_golang/model"
+ 	"github.com/golang/protobuf/proto"
  
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
  
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/prometheus/client_golang/model"
  )
 --- a/prometheus/example_selfcollector_test.go
 +++ b/prometheus/example_selfcollector_test.go
 @@ -18,7 +18,7 @@
  
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
  
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
@@ -51,7 +51,7 @@
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
  
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
  
 --- a/prometheus/expvar_test.go
 +++ b/prometheus/expvar_test.go
@@ -89,7 +89,7 @@
 --- a/prometheus/histogram.go
 +++ b/prometheus/histogram.go
 @@ -23,7 +23,7 @@
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
  
  	"github.com/prometheus/client_golang/model"
 -	dto "github.com/prometheus/client_model/go"
@@ -134,7 +134,7 @@
 +++ b/prometheus/registry.go
 @@ -36,7 +36,7 @@
  	"github.com/prometheus/client_golang/deps/bitbucket.org/ww/goautoneg"
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
  
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
@@ -146,7 +146,7 @@
 @@ -26,7 +26,7 @@
  	"testing"
  
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
  )
@@ -156,7 +156,7 @@
 +++ b/prometheus/summary.go
 @@ -24,7 +24,7 @@
  	"github.com/prometheus/client_golang/deps/github.com/beorn7/perks/quantile"
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
  
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
@@ -183,19 +183,19 @@
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
  
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
  )
 --- a/text/bench_test.go
 +++ b/text/bench_test.go
-@@ -19,7 +19,7 @@
- 	"io"
- 	"io/ioutil"
- 	"testing"
--	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
+@@ -22,7 +22,7 @@
  
  	"github.com/matttproud/golang_protobuf_extensions/pbutil"
+ 
+-	dto "github.com/prometheus/client_model/go"
++	dto "github.com/prometheus/client_golang/client_model"
  )
+ 
+ // Benchmarks to show how much penalty text format parsing actually inflicts.
 --- a/text/create.go
 +++ b/text/create.go
 @@ -28,7 +28,7 @@
@@ -212,7 +212,7 @@
 @@ -20,7 +20,7 @@
  	"testing"
  
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
  )
@@ -227,14 +227,14 @@
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
  
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
  	"github.com/prometheus/client_golang/model"
 --- a/text/parse_test.go
 +++ b/text/parse_test.go
 @@ -19,7 +19,7 @@
  	"testing"
  
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
 -	dto "github.com/prometheus/client_model/go"
 +	dto "github.com/prometheus/client_golang/client_model"
  )
@@ -243,7 +243,7 @@
 --- a/text/proto.go
 +++ b/text/proto.go
 @@ -20,7 +20,7 @@
- 	"code.google.com/p/goprotobuf/proto"
+ 	"github.com/golang/protobuf/proto"
  	"github.com/matttproud/golang_protobuf_extensions/pbutil"
  
 -	dto "github.com/prometheus/client_model/go"
