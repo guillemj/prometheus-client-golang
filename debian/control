@@ -3,7 +3,8 @@ Section: devel
 Priority: extra
 Maintainer: Martín Ferrari <tincho@debian.org>
 Build-Depends: debhelper (>= 9.0.0), dh-golang, golang-go,
- golang-goprotobuf-dev, golang-protobuf-extensions-dev (>= 0+git20150225),
+ golang-goprotobuf-dev (>= 0.0~git20150526),
+ golang-protobuf-extensions-dev (>= 0+git20150225),
  golang-procfs-dev
 Standards-Version: 3.9.6
 Vcs-Git: git://anonscm.debian.org/collab-maint/golang-prometheus-client.git/

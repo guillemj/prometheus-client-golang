@@ -1,4 +1,4 @@
-golang-prometheus-client (0.5.0+ds-1) UNRELEASED; urgency=medium
+golang-prometheus-client (0.6.0+ds-1) UNRELEASED; urgency=medium
 
   * New upstream release, which includes an incompatible change in metric
     fingerprints, so invalidates all past storage. This is not a problem yet,
