@@ -1,4 +1,4 @@
-golang-prometheus-client (0.6.0+ds-1) UNRELEASED; urgency=medium
+golang-prometheus-client (0.6.0+ds-1) unstable; urgency=medium
 
   * New upstream release, which includes an incompatible change in metric
     fingerprints, so invalidates all past storage. This is not a problem yet,
@@ -12,7 +12,7 @@ golang-prometheus-client (0.6.0+ds-1) UNRELEASED; urgency=medium
   * Fix bug in which the compiled protocol buffer was not found by code using
     this package.
 
- -- Martín Ferrari <tincho@debian.org>  Wed, 13 May 2015 14:34:26 +0000
+ -- Martín Ferrari <tincho@debian.org>  Mon, 29 Jun 2015 16:19:04 +0000
 
 golang-prometheus-client (0.2.0-1+1) unstable; urgency=medium
 
