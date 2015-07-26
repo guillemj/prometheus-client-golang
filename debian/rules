@@ -23,6 +23,10 @@ BUILDDIR := $(shell perl -w -MDebian::Debhelper::Buildsystem::golang -e \
 PROTODIR := $(CURDIR)/$(BUILDDIR)/src/$(DH_GOPKG)/client_model
 DESTDEPSDIR := $(BUILDDIR)/src/$(DH_GOPKG)/deps
 
+DEBVERS    ?= $(shell dpkg-parsechangelog | sed -n -e 's/^Version: //p')
+VERSION    ?= $(shell echo '$(DEBVERS)' | sed 's/^[[:digit:]]*://; s/[-].*//')
+DEBPKGNAME ?= $(shell dpkg-parsechangelog | sed -n -e 's/^Source: //p')
+
 override_dh_auto_configure:
 	dh_auto_configure -O--buildsystem=golang
 	mkdir -p $(PROTODIR)
@@ -35,3 +39,9 @@ override_dh_auto_configure:
 	cp -av text/testdata $(BUILDDIR)/src/$(DH_GOPKG)/text
 	cp -av Godeps/_workspace/src/github.com/beorn7/perks/quantile/exampledata.txt \
 	    $(DESTDEPSDIR)/github.com/beorn7/perks/quantile/
+
+gen-orig-tgz:
+	if [ ! -f ../$(DEBPKGNAME)_$(VERSION).orig.tar.gz ] ; then \
+            git archive --format=tar.gz --prefix=$(DEBPKGNAME)-$(VERSION)/ \
+            upstream/$(VERSION) >../$(DEBPKGNAME)_$(VERSION).orig.tar.gz ; \
+	fi
