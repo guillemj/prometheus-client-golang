@@ -32,5 +32,6 @@ override_dh_auto_configure:
 	rm -rf $(BUILDDIR)/src/$(DH_GOPKG)/Godeps
 	# Include test fixtures.
 	cp -av extraction/fixtures $(BUILDDIR)/src/$(DH_GOPKG)/extraction
+	cp -av text/testdata $(BUILDDIR)/src/$(DH_GOPKG)/text
 	cp -av Godeps/_workspace/src/github.com/beorn7/perks/quantile/exampledata.txt \
 	    $(DESTDEPSDIR)/github.com/beorn7/perks/quantile/
