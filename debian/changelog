@@ -1,8 +1,8 @@
-golang-prometheus-client (0.7.0+ds-2) UNRELEASED; urgency=medium
+golang-prometheus-client (0.7.0+ds-2) unstable; urgency=medium
 
   * Disable flaky TestSummaryDecay test. Closes: #796421.
 
- -- Martín Ferrari <tincho@debian.org>  Sat, 22 Aug 2015 09:41:05 +0000
+ -- Martín Ferrari <tincho@debian.org>  Sat, 22 Aug 2015 09:41:21 +0000
 
 golang-prometheus-client (0.7.0+ds-1) unstable; urgency=medium
 
