@@ -1,3 +1,11 @@
+golang-prometheus-client (0.7.0+ds-3) UNRELEASED; urgency=medium
+
+  * Add -common as new dependency, remove the private copy of the model
+    protobuf.
+  * [PENDING] new dependencies to go through NEW.
+
+ -- Martín Ferrari <tincho@debian.org>  Mon, 11 Jan 2016 06:24:06 -0300
+
 golang-prometheus-client (0.7.0+ds-2) unstable; urgency=medium
 
   * Disable flaky TestSummaryDecay test. Closes: #796421.

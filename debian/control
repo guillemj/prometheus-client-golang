@@ -4,9 +4,10 @@ Priority: extra
 Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
 Uploaders: Martín Ferrari <tincho@debian.org>
 Build-Depends: debhelper (>= 9.0.0), dh-golang, golang-go,
- golang-goprotobuf-dev (>= 0.0~git20150526),
- golang-protobuf-extensions-dev (>= 0+git20150225),
- golang-procfs-dev
+               golang-github-prometheus-common-dev,
+               golang-goprotobuf-dev (>= 0.0~git20150526),
+               golang-protobuf-extensions-dev (>= 0+git20150225),
+               golang-procfs-dev
 Standards-Version: 3.9.6
 Vcs-Git: git://anonscm.debian.org/pkg-go/packages/golang-prometheus-client.git/
 Vcs-Browser: http://anonscm.debian.org/cgit/pkg-go/packages/golang-prometheus-client.git/
@@ -14,8 +15,11 @@ Homepage: https://github.com/prometheus/client_golang.git
 
 Package: golang-prometheus-client-dev
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, golang-goprotobuf-dev,
- golang-protobuf-extensions-dev (>= 0+git20150225), golang-procfs-dev
+Depends: ${shlibs:Depends}, ${misc:Depends},
+         golang-github-prometheus-common-dev,
+         golang-goprotobuf-dev,
+         golang-protobuf-extensions-dev (>= 0+git20150225),
+         golang-procfs-dev
 Built-Using: ${misc:Built-Using}
 Description: Prometheus instrumentation library for Go applications
  This is the Prometheus Go client library. It provides two main functions:

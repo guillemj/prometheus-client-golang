@@ -5,7 +5,7 @@
  	"math"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  
  	"github.com/matttproud/golang_protobuf_extensions/pbutil"
  
@@ -16,7 +16,7 @@
  	"testing"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  func TestCounterAdd(t *testing.T) {
@@ -27,7 +27,7 @@
  	"github.com/golang/protobuf/proto"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  
  	"github.com/prometheus/client_golang/model"
  )
@@ -38,7 +38,7 @@
  	"github.com/golang/protobuf/proto"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  
  	"github.com/prometheus/client_golang/prometheus"
  )
@@ -49,7 +49,7 @@
  	"time"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  
  	"github.com/golang/protobuf/proto"
  
@@ -60,7 +60,7 @@
  	"strings"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  
  	"github.com/prometheus/client_golang/prometheus"
  )
@@ -71,7 +71,7 @@
  	"testing/quick"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  func listenGaugeStream(vals, result chan float64, done chan struct{}) {
@@ -82,7 +82,7 @@
  	"time"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  func TestGoCollector(t *testing.T) {
@@ -93,7 +93,7 @@
  
  	"github.com/prometheus/client_golang/model"
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  // A Histogram counts individual observations from an event or sample stream in
@@ -104,7 +104,7 @@
  	"testing/quick"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  func benchmarkHistogramObserve(w int, b *testing.B) {
@@ -115,7 +115,7 @@
  	"time"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  type respBody string
@@ -126,7 +126,7 @@
  	"strings"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  // A Metric models a single sample value with its meta data being exported to
@@ -137,7 +137,7 @@
  	"github.com/golang/protobuf/proto"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  
  	"github.com/prometheus/client_golang/model"
  	"github.com/prometheus/client_golang/text"
@@ -148,7 +148,7 @@
  
  	"github.com/golang/protobuf/proto"
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  type fakeResponseWriter struct {
@@ -159,7 +159,7 @@
  	"github.com/golang/protobuf/proto"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  
  	"github.com/prometheus/client_golang/model"
  )
@@ -170,7 +170,7 @@
  	"time"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  func benchmarkSummaryObserve(w int, b *testing.B) {
@@ -181,7 +181,7 @@
  	"sync/atomic"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  
  	"github.com/golang/protobuf/proto"
  )
@@ -192,7 +192,7 @@
  	"github.com/matttproud/golang_protobuf_extensions/pbutil"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  // Benchmarks to show how much penalty text format parsing actually inflicts.
@@ -203,7 +203,7 @@
  
  	"github.com/prometheus/client_golang/model"
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  // MetricFamilyToText converts a MetricFamily proto message into text format and
@@ -214,7 +214,7 @@
  
  	"github.com/golang/protobuf/proto"
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  func testCreate(t testing.TB) {
@@ -225,7 +225,7 @@
  	"strings"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  
  	"github.com/golang/protobuf/proto"
  	"github.com/prometheus/client_golang/model"
@@ -236,7 +236,7 @@
  
  	"github.com/golang/protobuf/proto"
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  var parser Parser
@@ -247,7 +247,7 @@
  	"github.com/matttproud/golang_protobuf_extensions/pbutil"
  
 -	dto "github.com/prometheus/client_model/go"
-+	dto "github.com/prometheus/client_golang/client_model"
++	dto "github.com/prometheus/common/client_model"
  )
  
  // WriteProtoDelimited writes the MetricFamily to the writer in delimited
