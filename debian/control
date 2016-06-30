@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 9.0.0), dh-golang, golang-go,
                golang-procfs-dev,
                golang-protobuf-extensions-dev (>= 0+git20150225),
 Standards-Version: 3.9.8
-Vcs-Git: git://anonscm.debian.org/pkg-go/packages/golang-prometheus-client.git/
+Vcs-Git: https://anonscm.debian.org/git/pkg-go/packages/golang-prometheus-client.git/
 Vcs-Browser: http://anonscm.debian.org/cgit/pkg-go/packages/golang-prometheus-client.git/
 Homepage: https://github.com/prometheus/client_golang.git
 XS-Go-Import-Path: github.com/prometheus/client_golang
