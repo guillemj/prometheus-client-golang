@@ -6,6 +6,7 @@ golang-prometheus-client (0.8.0-1) UNRELEASED; urgency=medium
   [ Martín Ferrari ]
   * New upstream release, which does not require repackaging any more.
   * debian/copyright: remove now obsolete entries.
+  * Remove now unneeded patches.
 
  -- Martín Ferrari <tincho@debian.org>  Thu, 18 Aug 2016 11:17:54 +0100
 
