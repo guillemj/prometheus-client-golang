@@ -1,4 +1,4 @@
-golang-github-prometheus-client-golang (0.8.0-1) UNRELEASED; urgency=medium
+golang-github-prometheus-client-golang (0.8.0-1) unstable; urgency=medium
 
   [ Paul Tagliamonte ]
   * Use a secure transport for the Vcs-Git and Vcs-Browser URL
@@ -11,7 +11,7 @@ golang-github-prometheus-client-golang (0.8.0-1) UNRELEASED; urgency=medium
   * debian/copyright: remove now obsolete entries.
   * Remove now unneeded patches.
 
- -- Martín Ferrari <tincho@debian.org>  Thu, 18 Aug 2016 11:17:54 +0100
+ -- Martín Ferrari <tincho@debian.org>  Thu, 18 Aug 2016 12:06:03 +0000
 
 golang-prometheus-client (0.7.0+ds-4) unstable; urgency=medium
 
