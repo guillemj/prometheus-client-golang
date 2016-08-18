@@ -4,12 +4,12 @@ golang-github-prometheus-client-golang (0.8.0-1) UNRELEASED; urgency=medium
   * Use a secure transport for the Vcs-Git and Vcs-Browser URL
 
   [ Martín Ferrari ]
-  * Rename source and binary packages, to match policy.
   * New upstream release, which does not require repackaging any more.
+  * Rename source and binary packages, to match policy.
+  * debian/control: Update dependencies, Vcs links, add transitional package.
+  * Update and simplify packaging.
   * debian/copyright: remove now obsolete entries.
   * Remove now unneeded patches.
-  * debian/control: Update dependencies.
-  * Update and simplify packaging.
 
  -- Martín Ferrari <tincho@debian.org>  Thu, 18 Aug 2016 11:17:54 +0100
 
