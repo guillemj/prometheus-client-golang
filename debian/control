@@ -1,4 +1,4 @@
-Source: golang-prometheus-client
+Source: golang-github-prometheus-client-golang
 Section: devel
 Priority: extra
 Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
@@ -16,7 +16,7 @@ Vcs-Browser: https://anonscm.debian.org/cgit/pkg-go/packages/golang-prometheus-c
 Homepage: https://github.com/prometheus/client_golang.git
 XS-Go-Import-Path: github.com/prometheus/client_golang
 
-Package: golang-prometheus-client-dev
+Package: golang-github-prometheus-client-golang-dev
 Architecture: all
 Depends: ${shlibs:Depends}, ${misc:Depends},
          golang-github-beorn7-perks-dev,
@@ -25,7 +25,9 @@ Depends: ${shlibs:Depends}, ${misc:Depends},
          golang-golang-x-net-dev,
          golang-goprotobuf-dev | golang-github-golang-protobuf-dev,
          golang-procfs-dev | golang-github-prometheus-procfs-dev,
-Built-Using: ${misc:Built-Using}
+Replaces: golang-prometheus-client-dev (<< 0.8.0-1~)
+Breaks: golang-prometheus-client-dev (<< 0.8.0-1~)
+Provides: golang-prometheus-client-dev
 Description: Prometheus instrumentation library for Go applications
  This is the Prometheus Go client library. It provides two main functions:
  .
@@ -34,3 +36,12 @@ Description: Prometheus instrumentation library for Go applications
  .
  * The consumption library is used to process metrics exported by a Prometheus
    client. (The Prometheus server is using that library.)
+
+Package: golang-prometheus-client-dev
+Depends: golang-github-prometheus-client-golang-dev, ${misc:Depends}
+Architecture: all
+Priority: extra
+Section: oldlibs
+Description: Transitional package for golang-github-prometheus-client-golang-dev
+ This is a transitional package to ease upgrades to the
+ golang-github-prometheus-client-golang-dev package. It can safely be removed.
