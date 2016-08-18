@@ -1,9 +1,13 @@
-golang-prometheus-client (0.7.0+ds-5) UNRELEASED; urgency=medium
+golang-prometheus-client (0.8.0-1) UNRELEASED; urgency=medium
 
-  * Team upload.
+  [ Paul Tagliamonte ]
   * Use a secure transport for the Vcs-Git and Vcs-Browser URL
 
- -- Paul Tagliamonte <paultag@debian.org>  Wed, 29 Jun 2016 20:43:13 -0400
+  [ Martín Ferrari ]
+  * New upstream release, which does not require repackaging any more.
+  * debian/copyright: remove now obsolete entries.
+
+ -- Martín Ferrari <tincho@debian.org>  Thu, 18 Aug 2016 11:17:54 +0100
 
 golang-prometheus-client (0.7.0+ds-4) unstable; urgency=medium
 
