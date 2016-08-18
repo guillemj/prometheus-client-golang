@@ -1,36 +1,16 @@
 #!/usr/bin/make -f
 
-# Uncomment this to turn on verbose mode.
 export DH_VERBOSE=1
-
-# DH_GOPKG is the upstream path which you would normally “go get”.
-# Using it allows us to build applications without patching locations.
-export DH_GOPKG := github.com/prometheus/client_golang
 
 # Exclude sample code from compilation and installation.
 export DH_GOLANG_EXCLUDES := examples
-
-%:
-	dh $@ --buildsystem=golang --with=golang
-
-BUILDDIR := $(shell perl -w -MDebian::Debhelper::Buildsystem::golang -e \
-    'print Debian::Debhelper::Buildsystem::golang->new()->get_builddir()')
-DESTDEPSDIR := $(BUILDDIR)/src/$(DH_GOPKG)/deps
 
 DEBVERS    ?= $(shell dpkg-parsechangelog | sed -n -e 's/^Version: //p')
 VERSION    ?= $(shell echo '$(DEBVERS)' | sed 's/^[[:digit:]]*://; s/[-].*//')
 DEBPKGNAME ?= $(shell dpkg-parsechangelog | sed -n -e 's/^Source: //p')
 
-override_dh_auto_configure:
-	dh_auto_configure -O--buildsystem=golang
-	# Move vendored dependencies to a saner path.
-	mv -v $(BUILDDIR)/src/$(DH_GOPKG)/Godeps/_workspace/src $(DESTDEPSDIR)
-	rm -rf $(BUILDDIR)/src/$(DH_GOPKG)/Godeps
-	# Include test fixtures.
-	cp -av extraction/fixtures $(BUILDDIR)/src/$(DH_GOPKG)/extraction
-	cp -av text/testdata $(BUILDDIR)/src/$(DH_GOPKG)/text
-	cp -av Godeps/_workspace/src/github.com/beorn7/perks/quantile/exampledata.txt \
-	    $(DESTDEPSDIR)/github.com/beorn7/perks/quantile/
+%:
+	dh $@ --buildsystem=golang --with=golang
 
 gen-orig-tgz:
 	if [ ! -f ../$(DEBPKGNAME)_$(VERSION).orig.tar.gz ] ; then \

@@ -8,6 +8,7 @@ golang-prometheus-client (0.8.0-1) UNRELEASED; urgency=medium
   * debian/copyright: remove now obsolete entries.
   * Remove now unneeded patches.
   * debian/control: Update dependencies.
+  * Update and simplify packaging.
 
  -- Martín Ferrari <tincho@debian.org>  Thu, 18 Aug 2016 11:17:54 +0100
 
