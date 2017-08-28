@@ -1,4 +1,4 @@
-golang-github-prometheus-client-golang (0.8.0-2) UNRELEASED; urgency=medium
+golang-github-prometheus-client-golang (0.8.0-2) unstable; urgency=medium
 
   * Disable flaky test. Closes: 854687.
   * debian/control: Update Standards-Version (no changes).
@@ -8,7 +8,7 @@ golang-github-prometheus-client-golang (0.8.0-2) UNRELEASED; urgency=medium
   * debian/rules: Remove unneeded stuff.
   * Add gbp.conf to reflect workflow and structure.
 
- -- Martín Ferrari <tincho@debian.org>  Mon, 28 Aug 2017 16:43:55 +0000
+ -- Martín Ferrari <tincho@debian.org>  Mon, 28 Aug 2017 16:54:26 +0000
 
 golang-github-prometheus-client-golang (0.8.0-1) unstable; urgency=medium
 
