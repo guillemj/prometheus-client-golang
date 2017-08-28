@@ -1,6 +1,10 @@
 golang-github-prometheus-client-golang (0.8.0-2) UNRELEASED; urgency=medium
 
   * Disable flaky test. Closes: 854687.
+  * debian/control: Update Standards-Version (no changes).
+  * debian/control: Mark package as autopkgtest-able.
+  * debian/copyright: Format uses http protocol instead of https.
+  * A few formatting fixes from cme.
 
  -- Martín Ferrari <tincho@debian.org>  Mon, 28 Aug 2017 16:43:55 +0000
 
