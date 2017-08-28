@@ -1,19 +1,8 @@
 #!/usr/bin/make -f
 
 export DH_VERBOSE=1
-
 # Exclude sample code from compilation and installation.
 export DH_GOLANG_EXCLUDES := examples
 
-DEBVERS    ?= $(shell dpkg-parsechangelog | sed -n -e 's/^Version: //p')
-VERSION    ?= $(shell echo '$(DEBVERS)' | sed 's/^[[:digit:]]*://; s/[-].*//')
-DEBPKGNAME ?= $(shell dpkg-parsechangelog | sed -n -e 's/^Source: //p')
-
 %:
 	dh $@ --buildsystem=golang --with=golang
-
-gen-orig-tgz:
-	if [ ! -f ../$(DEBPKGNAME)_$(VERSION).orig.tar.gz ] ; then \
-            git archive --format=tar.gz --prefix=$(DEBPKGNAME)-$(VERSION)/ \
-            upstream/$(VERSION) >../$(DEBPKGNAME)_$(VERSION).orig.tar.gz ; \
-	fi
