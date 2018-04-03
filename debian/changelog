@@ -1,3 +1,9 @@
+golang-github-prometheus-client-golang (0.8.0-3) UNRELEASED; urgency=medium
+
+  * Point Vcs-* urls to salsa.debian.org.
+
+ -- Alexandre Viau <aviau@debian.org>  Mon, 02 Apr 2018 20:06:54 -0400
+
 golang-github-prometheus-client-golang (0.8.0-2) unstable; urgency=medium
 
   * Disable flaky test. Closes: 854687.
