@@ -1,8 +1,13 @@
-golang-github-prometheus-client-golang (0.8.0-3) UNRELEASED; urgency=medium
+golang-github-prometheus-client-golang (0.9.0~pre1+git20180417.82f5ff1-1) UNRELEASED; urgency=medium
 
+  [ Alexandre Viau ]
   * Point Vcs-* urls to salsa.debian.org.
 
- -- Alexandre Viau <aviau@debian.org>  Mon, 02 Apr 2018 20:06:54 -0400
+  [ Martín Ferrari ]
+  * Upload a snapshot of upstream repository, required by
+    prometheus-alertmanager.
+
+ -- Martín Ferrari <tincho@debian.org>  Fri, 18 May 2018 10:45:40 +0000
 
 golang-github-prometheus-client-golang (0.8.0-2) unstable; urgency=medium
 
