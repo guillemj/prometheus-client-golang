@@ -1,0 +1,10 @@
+--- a/prometheus/promhttp/instrument_client_1_8_test.go
++++ b/prometheus/promhttp/instrument_client_1_8_test.go
+@@ -25,6 +25,7 @@
+ )
+ 
+ func TestClientMiddlewareAPI(t *testing.T) {
++	t.Skip("Skipping test that uses the network.")
+ 	client := http.DefaultClient
+ 	client.Timeout = 1 * time.Second
+ 

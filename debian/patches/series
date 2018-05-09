@@ -1,1 +1,2 @@
-Bug854687-Disable_flaky_test.patch
+01-Bug854687-Disable_flaky_test.patch
+02-Disable_network_test.patch
