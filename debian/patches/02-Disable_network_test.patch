@@ -1,3 +1,4 @@
+Description: Skip test that uses the network
 --- a/prometheus/promhttp/instrument_client_1_8_test.go
 +++ b/prometheus/promhttp/instrument_client_1_8_test.go
 @@ -25,6 +25,7 @@
