@@ -1,3 +1,9 @@
+golang-github-prometheus-client-golang (0.9.0~pre1+git20180417.82f5ff1-2) unstable; urgency=medium
+
+  * Release to unstable, as the new -common fails without it.
+
+ -- Martín Ferrari <tincho@debian.org>  Wed, 23 May 2018 16:26:49 +0000
+
 golang-github-prometheus-client-golang (0.9.0~pre1+git20180417.82f5ff1-1) experimental; urgency=medium
 
   [ Alexandre Viau ]
