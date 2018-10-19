@@ -1,0 +1,13 @@
+Description: Avoid a spurious dependency on a second protobuf library.
+
+--- a/prometheus/wrap_test.go
++++ b/prometheus/wrap_test.go
+@@ -19,7 +19,7 @@
+ 	"strings"
+ 	"testing"
+ 
+-	"github.com/gogo/protobuf/proto"
++	"github.com/golang/protobuf/proto"
+ 
+ 	dto "github.com/prometheus/client_model/go"
+ )
