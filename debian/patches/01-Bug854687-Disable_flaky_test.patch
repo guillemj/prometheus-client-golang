@@ -5,7 +5,7 @@ Description: Disable flaky test.
 
 --- a/prometheus/summary_test.go
 +++ b/prometheus/summary_test.go
-@@ -330,6 +330,7 @@
+@@ -355,6 +355,7 @@
  }
  
  func TestSummaryDecay(t *testing.T) {
