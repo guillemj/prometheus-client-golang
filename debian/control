@@ -38,13 +38,3 @@ Description: Prometheus instrumentation library for Go applications
  .
   * The consumption library is used to process metrics exported by a Prometheus
    client. (The Prometheus server is using that library.)
-
-Package: golang-prometheus-client-dev
-Architecture: all
-Section: oldlibs
-Priority: optional
-Depends: golang-github-prometheus-client-golang-dev,
-         ${misc:Depends},
-Description: Transitional package for golang-github-prometheus-client-golang-dev
- This is a transitional package to ease upgrades to the
- golang-github-prometheus-client-golang-dev package. It can safely be removed.
