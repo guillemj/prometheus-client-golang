@@ -1,4 +1,4 @@
-golang-github-prometheus-client-golang (1.2.1-1) UNRELEASED; urgency=medium
+golang-github-prometheus-client-golang (1.2.1-1) unstable; urgency=medium
 
   * New upstream release.
   * Remove transitional golang-prometheus-client-dev package. Closes:
@@ -9,7 +9,7 @@ golang-github-prometheus-client-golang (1.2.1-1) UNRELEASED; urgency=medium
   * Remove unneeded debian/install file.
   * Add new dependencies.
 
- -- Martina Ferrari <tincho@debian.org>  Tue, 29 Oct 2019 09:39:41 +0000
+ -- Martina Ferrari <tincho@debian.org>  Tue, 29 Oct 2019 09:40:40 +0000
 
 golang-github-prometheus-client-golang (0.9.0-1) unstable; urgency=medium
 
