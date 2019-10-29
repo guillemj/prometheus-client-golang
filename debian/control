@@ -8,6 +8,8 @@ Build-Depends: debhelper-compat (= 12),
                dh-golang,
                golang-any,
                golang-github-beorn7-perks-dev,
+               golang-github-cespare-xxhash-dev,
+               golang-github-json-iterator-go-dev,
                golang-github-prometheus-client-model-dev,
                golang-github-prometheus-common-dev (>= 0+git20180413),
                golang-golang-x-net-dev,
@@ -22,6 +24,8 @@ XS-Go-Import-Path: github.com/prometheus/client_golang
 Package: golang-github-prometheus-client-golang-dev
 Architecture: all
 Depends: golang-github-beorn7-perks-dev,
+         golang-github-cespare-xxhash-dev,
+         golang-github-json-iterator-go-dev,
          golang-github-prometheus-client-model-dev,
          golang-github-prometheus-common-dev (>= 0+git20180413),
          golang-golang-x-net-dev,
