@@ -34,6 +34,11 @@ Depends: golang-github-beorn7-perks-dev,
          ${misc:Depends},
          ${shlibs:Depends},
 Provides: golang-prometheus-client-dev,
+Breaks: golang-github-cloudflare-redoctober-dev (<< 0.0~git20161017.0.78e9720-4~),
+        golang-github-grpc-ecosystem-go-grpc-prometheus-dev (<< 1.2.0+git20191002~),
+        golang-github-mwitkow-go-conntrack-dev (<< 0.0~git20190716~),
+        golang-redoctober (<< 0.0~git20161017.0.78e9720-4~),
+        prometheus-postfix-exporter (<< 0.2.0-1~),
 Description: Prometheus instrumentation library for Go applications
  This is the Prometheus Go client library. It provides two main functions:
  .
