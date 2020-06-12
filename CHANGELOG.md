@@ -1,3 +1,34 @@
+## 1.6.0 / 2020-04-28
+
+* [FEATURE] testutil: Add lint checks for metrics, including a sub-package `promlint` to expose the linter engine for external usage. #739 #743
+* [ENHANCEMENT] API client: Improve error messages. #731
+* [BUGFIX] process collector: Fix `process_resident_memory_bytes` on 32bit MS Windows. #734
+
+## 1.5.1 / 2020-03-14
+
+* [BUGFIX] promhttp: Remove another superfluous `WriteHeader` call. #726
+
+## 1.5.0 / 2020-03-03
+
+* [FEATURE] promauto: Add a factory to allow automatic registration with a local registry. #713
+* [FEATURE] promauto: Add `NewUntypedFunc`. #713
+* [FEATURE] API client: Support new metadata endpoint. #718
+
+## 1.4.1 / 2020-02-07
+
+* [BUGFIX] Fix timestamp of exemplars in `CounterVec`. #710
+
+## 1.4.0 / 2020-01-27
+
+* [CHANGE] Go collector: Improve doc string for `go_gc_duration_seconds`. #702
+* [FEATURE] Support a subset of OpenMetrics, including exemplars. Needs opt-in via `promhttp.HandlerOpts`. **EXPERIMENTAL** #706
+* [FEATURE] Add `testutil.CollectAndCount`. #703
+
+## 1.3.0 / 2019-12-21
+
+* [FEATURE] Support tags in Graphite bridge. #668
+* [BUGFIX] API client: Actually return Prometheus warnings. #699
+
 ## 1.2.1 / 2019-10-17
 
 * [BUGFIX] Fix regression in the implementation of `Registerer.Unregister`. #663
