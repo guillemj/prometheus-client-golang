@@ -1,6 +1,7 @@
 Source: golang-github-prometheus-client-golang
 Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
 Uploaders: Martina Ferrari <tincho@debian.org>,
+           Lucas Kanashiro <kanashiro@debian.org>
 Section: devel
 Testsuite: autopkgtest-pkg-go
 Priority: optional
