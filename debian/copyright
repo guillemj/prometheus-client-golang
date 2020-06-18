@@ -3,7 +3,7 @@ Upstream-Name: github.com/prometheus/client_golang
 Source: https://github.com/prometheus/client_golang/
 
 Files: *
-Copyright: 2012-2015 The Prometheus Authors
+Copyright: 2012-2020 The Prometheus Authors
 License: Apache-2.0
 
 Files: debian/*
