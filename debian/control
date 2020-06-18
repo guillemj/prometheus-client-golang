@@ -5,7 +5,7 @@ Uploaders: Martina Ferrari <tincho@debian.org>,
 Section: devel
 Testsuite: autopkgtest-pkg-go
 Priority: optional
-Build-Depends: debhelper-compat (= 12),
+Build-Depends: debhelper-compat (= 13),
                dh-golang,
                golang-any,
                golang-github-beorn7-perks-dev,
