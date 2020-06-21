@@ -1,5 +1,6 @@
 golang-github-prometheus-client-golang (1.6.0-1) UNRELEASED; urgency=medium
 
+  [ Lucas Kanashiro ]
   * New upstream release.
   * Add myself to the Uploaders list
   * Bump debhelper compatibility level to 13
@@ -8,19 +9,23 @@ golang-github-prometheus-client-golang (1.6.0-1) UNRELEASED; urgency=medium
   * Declare compliance with Debian Policy 4.5.0
   * Update years of the upstream copyright
 
+  [ Daniel Swarbrick ]
+  * Add myself to Uploaders
+  * Update maintainer email addresses / names
+
  -- Lucas Kanashiro <kanashiro@debian.org>  Thu, 18 Jun 2020 17:46:27 -0300
 
 golang-github-prometheus-client-golang (1.2.1-3) unstable; urgency=medium
 
   * debian/control: Add Breaks for API changes.
 
- -- Martina Ferrari <tincho@debian.org>  Sun, 03 Nov 2019 01:17:15 +0000
+ -- Martina Ferrari <tina@debian.org>  Sun, 03 Nov 2019 01:17:15 +0000
 
 golang-github-prometheus-client-golang (1.2.1-2) unstable; urgency=medium
 
   * Update minimum version of common library, which fixes a bug.
 
- -- Martina Ferrari <tincho@debian.org>  Tue, 29 Oct 2019 16:04:50 +0000
+ -- Martina Ferrari <tina@debian.org>  Tue, 29 Oct 2019 16:04:50 +0000
 
 golang-github-prometheus-client-golang (1.2.1-1) unstable; urgency=medium
 
@@ -33,27 +38,27 @@ golang-github-prometheus-client-golang (1.2.1-1) unstable; urgency=medium
   * Remove unneeded debian/install file.
   * Add new dependencies.
 
- -- Martina Ferrari <tincho@debian.org>  Tue, 29 Oct 2019 09:40:40 +0000
+ -- Martina Ferrari <tina@debian.org>  Tue, 29 Oct 2019 09:40:40 +0000
 
 golang-github-prometheus-client-golang (0.9.0-1) unstable; urgency=medium
 
   * New upstream release.
   * debian/gbp.conf: Stop using pristine-tar.
 
- -- Martín Ferrari <tincho@debian.org>  Fri, 19 Oct 2018 15:32:22 +0000
+ -- Martina Ferrari <tina@debian.org>  Fri, 19 Oct 2018 15:32:22 +0000
 
 golang-github-prometheus-client-golang (0.9.0~pre1+git20180417.82f5ff1-2) unstable; urgency=medium
 
   * Release to unstable, as the new -common fails without it.
 
- -- Martín Ferrari <tincho@debian.org>  Wed, 23 May 2018 16:26:49 +0000
+ -- Martina Ferrari <tina@debian.org>  Wed, 23 May 2018 16:26:49 +0000
 
 golang-github-prometheus-client-golang (0.9.0~pre1+git20180417.82f5ff1-1) experimental; urgency=medium
 
   [ Alexandre Viau ]
   * Point Vcs-* urls to salsa.debian.org.
 
-  [ Martín Ferrari ]
+  [ Martina Ferrari ]
   * Upload a snapshot of upstream repository, required by
     prometheus-alertmanager.
   * Skip test that accesses the network.
@@ -62,7 +67,7 @@ golang-github-prometheus-client-golang (0.9.0~pre1+git20180417.82f5ff1-1) experi
   * Upgrade dh compat to 11.
   * Update debian/docs.
 
- -- Martín Ferrari <tincho@debian.org>  Sat, 19 May 2018 15:28:08 +0000
+ -- Martina Ferrari <tina@debian.org>  Sat, 19 May 2018 15:28:08 +0000
 
 golang-github-prometheus-client-golang (0.8.0-2) unstable; urgency=medium
 
@@ -74,14 +79,14 @@ golang-github-prometheus-client-golang (0.8.0-2) unstable; urgency=medium
   * debian/rules: Remove unneeded stuff.
   * Add gbp.conf to reflect workflow and structure.
 
- -- Martín Ferrari <tincho@debian.org>  Mon, 28 Aug 2017 16:54:26 +0000
+ -- Martina Ferrari <tina@debian.org>  Mon, 28 Aug 2017 16:54:26 +0000
 
 golang-github-prometheus-client-golang (0.8.0-1) unstable; urgency=medium
 
   [ Paul Tagliamonte ]
   * Use a secure transport for the Vcs-Git and Vcs-Browser URL
 
-  [ Martín Ferrari ]
+  [ Martina Ferrari ]
   * New upstream release, which does not require repackaging any more.
   * Rename source and binary packages, to match policy.
   * debian/control: Update dependencies, Vcs links, add transitional package.
@@ -89,7 +94,7 @@ golang-github-prometheus-client-golang (0.8.0-1) unstable; urgency=medium
   * debian/copyright: remove now obsolete entries.
   * Remove now unneeded patches.
 
- -- Martín Ferrari <tincho@debian.org>  Thu, 18 Aug 2016 12:06:03 +0000
+ -- Martina Ferrari <tina@debian.org>  Thu, 18 Aug 2016 12:06:03 +0000
 
 golang-prometheus-client (0.7.0+ds-4) unstable; urgency=medium
 
@@ -98,7 +103,7 @@ golang-prometheus-client (0.7.0+ds-4) unstable; urgency=medium
   * Add XS-Go-Import-Path field.
   * Add lintian overrides for compressed test files.
 
- -- Martín Ferrari <tincho@debian.org>  Fri, 06 May 2016 18:15:35 +0000
+ -- Martina Ferrari <tina@debian.org>  Fri, 06 May 2016 18:15:35 +0000
 
 golang-prometheus-client (0.7.0+ds-3) unstable; urgency=medium
 
@@ -106,13 +111,13 @@ golang-prometheus-client (0.7.0+ds-3) unstable; urgency=medium
     protobuf.
   * Skip another flaky test.
 
- -- Martín Ferrari <tincho@debian.org>  Mon, 11 Jan 2016 19:13:47 +0000
+ -- Martina Ferrari <tina@debian.org>  Mon, 11 Jan 2016 19:13:47 +0000
 
 golang-prometheus-client (0.7.0+ds-2) unstable; urgency=medium
 
   * Disable flaky TestSummaryDecay test. Closes: #796421.
 
- -- Martín Ferrari <tincho@debian.org>  Sat, 22 Aug 2015 09:41:21 +0000
+ -- Martina Ferrari <tina@debian.org>  Sat, 22 Aug 2015 09:41:21 +0000
 
 golang-prometheus-client (0.7.0+ds-1) unstable; urgency=medium
 
@@ -120,7 +125,7 @@ golang-prometheus-client (0.7.0+ds-1) unstable; urgency=medium
   * Add missing test data.
   * New upstream version.
 
- -- Martín Ferrari <tincho@debian.org>  Sat, 22 Aug 2015 00:10:11 +0200
+ -- Martina Ferrari <tina@debian.org>  Sat, 22 Aug 2015 00:10:11 +0200
 
 golang-prometheus-client (0.6.0+ds-1) unstable; urgency=medium
 
@@ -136,16 +141,16 @@ golang-prometheus-client (0.6.0+ds-1) unstable; urgency=medium
   * Fix bug in which the compiled protocol buffer was not found by code using
     this package.
 
- -- Martín Ferrari <tincho@debian.org>  Mon, 29 Jun 2015 16:19:04 +0000
+ -- Martina Ferrari <tina@debian.org>  Mon, 29 Jun 2015 16:19:04 +0000
 
 golang-prometheus-client (0.2.0-1+1) unstable; urgency=medium
 
   * Re-build with current versions of build dependencies.
 
- -- Martín Ferrari <tincho@debian.org>  Sun, 01 Mar 2015 13:43:22 +0000
+ -- Martina Ferrari <tina@debian.org>  Sun, 01 Mar 2015 13:43:22 +0000
 
 golang-prometheus-client (0.2.0-1) unstable; urgency=medium
 
   * Initial release. (Closes: #779260)
 
- -- Martín Ferrari <tincho@debian.org>  Thu, 26 Feb 2015 14:12:39 +0000
+ -- Martina Ferrari <tina@debian.org>  Thu, 26 Feb 2015 14:12:39 +0000

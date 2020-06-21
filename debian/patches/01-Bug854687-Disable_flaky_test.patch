@@ -1,6 +1,6 @@
 Last-Update: 2017-08-28
 Forwarded: https://github.com/prometheus/client_golang/issues/338
-Author: Martín Ferrari <tincho@debian.org>
+Author: Martina Ferrari <tina@debian.org>
 Description: Disable flaky test.
 
 --- a/prometheus/summary_test.go
