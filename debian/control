@@ -1,6 +1,6 @@
 Source: golang-github-prometheus-client-golang
 Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
-Uploaders: Martina Ferrari <tincho@debian.org>,
+Uploaders: Martina Ferrari <tina@debian.org>,
            Lucas Kanashiro <kanashiro@debian.org>,
            Daniel Swarbrick <daniel.swarbrick@cloud.ionos.com>
 Section: devel
