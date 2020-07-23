@@ -1,4 +1,4 @@
-golang-github-prometheus-client-golang (1.7.1-1) UNRELEASED; urgency=low
+golang-github-prometheus-client-golang (1.7.1-1) unstable; urgency=low
 
   [ Debian Janitor ]
   * Set upstream metadata fields: Repository-Browse.
