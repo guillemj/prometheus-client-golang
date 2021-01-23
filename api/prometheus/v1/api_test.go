@@ -84,7 +84,7 @@ func (c *apiTestClient) Do(ctx context.Context, req *http.Request) (*http.Respon
 	if test.inStatusCode != 0 {
 		resp.StatusCode = test.inStatusCode
 	} else if test.inErr != nil {
-		resp.StatusCode = statusAPIError
+		resp.StatusCode = http.StatusUnprocessableEntity
 	} else {
 		resp.StatusCode = http.StatusOK
 	}
@@ -212,6 +212,13 @@ func TestAPIs(t *testing.T) {
 	doMetadata := func(metric string, limit string) func() (interface{}, Warnings, error) {
 		return func() (interface{}, Warnings, error) {
 			v, err := promAPI.Metadata(context.Background(), metric, limit)
+			return v, nil, err
+		}
+	}
+
+	doTSDB := func() func() (interface{}, Warnings, error) {
+		return func() (interface{}, Warnings, error) {
+			v, err := promAPI.TSDB(context.Background())
 			return v, nil, err
 		}
 	}
@@ -639,10 +646,10 @@ func TestAPIs(t *testing.T) {
 				"storageRetention":    "1d",
 			},
 			res: RuntimeinfoResult{
-				StartTime:           "2020-05-18T15:52:53.4503113Z",
+				StartTime:           time.Date(2020, 5, 18, 15, 52, 53, 450311300, time.UTC),
 				CWD:                 "/prometheus",
 				ReloadConfigSuccess: true,
-				LastConfigTime:      "2020-05-18T15:52:56Z",
+				LastConfigTime:      time.Date(2020, 5, 18, 15, 52, 56, 0, time.UTC),
 				ChunkCount:          72692,
 				TimeSeriesCount:     18476,
 				CorruptionCount:     0,
@@ -953,6 +960,72 @@ func TestAPIs(t *testing.T) {
 			},
 			err: fmt.Errorf("some error"),
 		},
+
+		{
+			do:        doTSDB(),
+			reqMethod: "GET",
+			reqPath:   "/api/v1/status/tsdb",
+			inErr:     fmt.Errorf("some error"),
+			err:       fmt.Errorf("some error"),
+		},
+
+		{
+			do:        doTSDB(),
+			reqMethod: "GET",
+			reqPath:   "/api/v1/status/tsdb",
+			inRes: map[string]interface{}{
+				"seriesCountByMetricName": []interface{}{
+					map[string]interface{}{
+						"name":  "kubelet_http_requests_duration_seconds_bucket",
+						"value": 1000,
+					},
+				},
+				"labelValueCountByLabelName": []interface{}{
+					map[string]interface{}{
+						"name":  "__name__",
+						"value": 200,
+					},
+				},
+				"memoryInBytesByLabelName": []interface{}{
+					map[string]interface{}{
+						"name":  "id",
+						"value": 4096,
+					},
+				},
+				"seriesCountByLabelValuePair": []interface{}{
+					map[string]interface{}{
+						"name":  "job=kubelet",
+						"value": 30000,
+					},
+				},
+			},
+			res: TSDBResult{
+				SeriesCountByMetricName: []Stat{
+					{
+						Name:  "kubelet_http_requests_duration_seconds_bucket",
+						Value: 1000,
+					},
+				},
+				LabelValueCountByLabelName: []Stat{
+					{
+						Name:  "__name__",
+						Value: 200,
+					},
+				},
+				MemoryInBytesByLabelName: []Stat{
+					{
+						Name:  "id",
+						Value: 4096,
+					},
+				},
+				SeriesCountByLabelValuePair: []Stat{
+					{
+						Name:  "job=kubelet",
+						Value: 30000,
+					},
+				},
+			},
+		},
 	}
 
 	var tests []apiTest
@@ -1045,7 +1118,7 @@ func (c *testClient) Do(ctx context.Context, req *http.Request) (*http.Response,
 func TestAPIClientDo(t *testing.T) {
 	tests := []apiClientTest{
 		{
-			code: statusAPIError,
+			code: http.StatusUnprocessableEntity,
 			response: &apiResponse{
 				Status:    "error",
 				Data:      json.RawMessage(`null`),
@@ -1059,7 +1132,7 @@ func TestAPIClientDo(t *testing.T) {
 			expectedBody: `null`,
 		},
 		{
-			code: statusAPIError,
+			code: http.StatusUnprocessableEntity,
 			response: &apiResponse{
 				Status:    "error",
 				Data:      json.RawMessage(`"test"`),
@@ -1104,7 +1177,7 @@ func TestAPIClientDo(t *testing.T) {
 			},
 		},
 		{
-			code:     statusAPIError,
+			code:     http.StatusUnprocessableEntity,
 			response: "bad json",
 			expectedErr: &Error{
 				Type: ErrBadResponse,
@@ -1112,7 +1185,7 @@ func TestAPIClientDo(t *testing.T) {
 			},
 		},
 		{
-			code: statusAPIError,
+			code: http.StatusUnprocessableEntity,
 			response: &apiResponse{
 				Status: "success",
 				Data:   json.RawMessage(`"test"`),
@@ -1123,7 +1196,7 @@ func TestAPIClientDo(t *testing.T) {
 			},
 		},
 		{
-			code: statusAPIError,
+			code: http.StatusUnprocessableEntity,
 			response: &apiResponse{
 				Status:    "success",
 				Data:      json.RawMessage(`"test"`),
@@ -1374,8 +1447,15 @@ func TestDoGetFallback(t *testing.T) {
 		body, _ := json.Marshal(apiResp)
 
 		if req.Method == http.MethodPost {
-			if req.URL.Path == "/blockPost" {
+			if req.URL.Path == "/blockPost405" {
 				http.Error(w, string(body), http.StatusMethodNotAllowed)
+				return
+			}
+		}
+
+		if req.Method == http.MethodPost {
+			if req.URL.Path == "/blockPost501" {
+				http.Error(w, string(body), http.StatusNotImplemented)
 				return
 			}
 		}
@@ -1410,8 +1490,24 @@ func TestDoGetFallback(t *testing.T) {
 		t.Fatalf("Mismatch in values")
 	}
 
-	// Do a fallbcak to a get.
-	u.Path = "/blockPost"
+	// Do a fallback to a get on 405.
+	u.Path = "/blockPost405"
+	_, b, _, err = api.DoGetFallback(context.TODO(), u, v)
+	if err != nil {
+		t.Fatalf("Error doing local request: %v", err)
+	}
+	if err := json.Unmarshal(b, resp); err != nil {
+		t.Fatal(err)
+	}
+	if resp.Method != http.MethodGet {
+		t.Fatalf("Mismatch method")
+	}
+	if resp.Values != v.Encode() {
+		t.Fatalf("Mismatch in values")
+	}
+
+	// Do a fallback to a get on 501.
+	u.Path = "/blockPost501"
 	_, b, _, err = api.DoGetFallback(context.TODO(), u, v)
 	if err != nil {
 		t.Fatalf("Error doing local request: %v", err)

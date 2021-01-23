@@ -1,3 +1,16 @@
+## 1.9.0 / 2020-12-17
+
+* [FEATURE] `NewPidFileFn` helper to create process collectors for processes whose PID is read from a file. #804
+* [BUGFIX] promhttp: Prevent endless loop in `InstrumentHandler...` middlewares with invalid metric or label names. #823
+
+## 1.8.0 / 2020-10-15
+
+* [CHANGE] API client: Use `time.Time` rather than `string` for timestamps in `RuntimeinfoResult`. #777
+* [FEATURE] Export `MetricVec` to facilitate implementation of vectors of custom `Metric` types. #803
+* [FEATURE API client: Support `/status/tsdb` endpoint. #773
+* [ENHANCEMENT] API client: Enable GET fallback on status code 501. #802
+* [ENHANCEMENT] Remove `Metric` references after reslicing to free up more memory. #784
+
 ## 1.7.1 / 2020-06-23
 
 * [BUGFIX] API client: Actually propagate start/end parameters of `LabelNames` and `LabelValues`. #771
