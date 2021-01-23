@@ -1,3 +1,18 @@
+golang-github-prometheus-client-golang (1.9.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release. Closes: #974426
+  * Use '' instead of `' in text
+  * Move note about license location on Debian systems into a Comment field
+  * Update gitlab-ci.yml from latest upstream
+  * Switch Section to golang
+  * Switch to Standards-Version 4.5.1 (no changes needed)
+  * Move non-transitional dependency alternatives first
+  * Update gitignore entries
+  * Do not enable DH_VERBOSE by default
+
+ -- Guillem Jover <gjover@sipwise.com>  Sat, 23 Jan 2021 03:58:27 +0100
+
 golang-github-prometheus-client-golang (1.7.1-1) unstable; urgency=low
 
   [ Debian Janitor ]
