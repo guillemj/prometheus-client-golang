@@ -3,7 +3,7 @@ Maintainer: Debian Go Packaging Team <team+pkg-go@tracker.debian.org>
 Uploaders: Martina Ferrari <tina@debian.org>,
            Lucas Kanashiro <kanashiro@debian.org>,
            Daniel Swarbrick <daniel.swarbrick@cloud.ionos.com>
-Section: devel
+Section: golang
 Testsuite: autopkgtest-pkg-go
 Priority: optional
 Build-Depends: debhelper-compat (= 13),
