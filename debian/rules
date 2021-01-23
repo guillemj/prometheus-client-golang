@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
 
-export DH_VERBOSE=1
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
 # Exclude sample code from compilation and installation.
 export DH_GOLANG_EXCLUDES := examples
 
