@@ -1,3 +1,12 @@
+golang-github-prometheus-client-golang (1.9.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Switch to debian/watch version 4
+  * Indent debian/watch file
+  * Mark -dev package as Multi-Arch: foreign
+
+ -- Guillem Jover <gjover@sipwise.com>  Tue, 26 Jan 2021 20:16:02 +0100
+
 golang-github-prometheus-client-golang (1.9.0-1) unstable; urgency=medium
 
   * Team upload.
